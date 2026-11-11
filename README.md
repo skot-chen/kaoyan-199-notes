@@ -7,4 +7,3 @@
 - 逻辑、写作：在原笔记基础上改错、压缩
 - 5 天背完计划
 
-数据来源：dollarser/kaoyan-199-guanzong-real-exams
