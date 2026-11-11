@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>管综199 速记</title>
+<meta name="description" content="管综199 二战速记：数学邪修公式、条件充分秒判、逻辑口诀、写作模板（基于2009–2026真题统计）">
+<style>
+:root{
+  --bg:#f7f5f0;--card:#fff;--ink:#1d1d1f;--sub:#5f5f66;--line:#e4e0d6;
+  --acc:#b4462a;--acc-soft:#fbe9e3;--ok:#2f7d4f;--ok-soft:#e3f3e9;--warn:#9a6b00;--warn-soft:#fff3d1;
+  --code:#f1eee6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16161a;--card:#1f1f25;--ink:#ececf0;--sub:#a3a3ad;--line:#33333c;
+    --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16161a;--card:#1f1f25;--ink:#ececf0;--sub:#a3a3ad;--line:#33333c;
+  --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 4px}
+.top h1{font-size:18px;margin:0}
+.top .days{font-size:13px;color:var(--sub)}
+nav{display:flex;gap:6px;overflow-x:auto;padding:6px 0 10px;scrollbar-width:none}
+nav button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.tools button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.tools button.on{border-color:var(--acc);color:var(--acc)}
+section{display:none;padding-bottom:60px}
+section.show{display:block}
+h2{font-size:21px;margin:26px 0 8px}
+h3{font-size:17px;margin:0 0 6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.card.done{opacity:.55}
+.card .row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.card label.chk{flex:none;font-size:13px;color:var(--sub);display:flex;gap:4px;align-items:center;cursor:pointer;white-space:nowrap}
+.tag{font-size:12px;font-weight:600;border-radius:6px;padding:1px 7px}
+.t-must{background:var(--acc-soft);color:var(--acc)}
+.t-do{background:var(--ok-soft);color:var(--ok)}
+.t-skip{background:var(--code);color:var(--sub)}
+.stars{color:var(--warn);font-size:13px;letter-spacing:1px}
+p{margin:6px 0}
+ul,ol{margin:6px 0;padding-left:22px}
+li{margin:3px 0}
+.f{background:var(--code);border-radius:6px;padding:1px 6px;font-family:"Cambria Math","Times New Roman",serif;white-space:nowrap}
+.memo .f{transition:filter .15s}
+.hide .f{filter:blur(6px);cursor:pointer}
+.hide .f.peek{filter:none}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);border-radius:8px;padding:10px 12px;margin:12px 0}
+.fix{background:var(--acc-soft);border-left:4px solid var(--acc);border-radius:8px;padding:10px 12px;margin:12px 0}
+.tblw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--code)}
+.bar{display:flex;align-items:center;gap:8px;font-size:14px;margin:3px 0}
+.bar b{width:22px}
+.bar span.b{height:12px;background:var(--acc);border-radius:3px}
+.small{font-size:13.5px;color:var(--sub)}
+a{color:var(--acc)}
+.big{font-size:20px;font-weight:700}
+@media print{header,.tools,label.chk{display:none}section{display:block!important}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="top"><h1>管综199 速记</h1><span class="days" id="days"></span></div>
+  <nav role="tablist" id="tabs">
+   <button role="tab" data-t="plan">考场策略</button>
+   <button role="tab" data-t="math">数学邪修</button>
+   <button role="tab" data-t="logic">逻辑</button>
+   <button role="tab" data-t="write">写作</button>
+   <button role="tab" data-t="days5">5天背完</button>
+  </nav>
+ </div>
+</header>
+
+<main class="wrap">
+<div class="tools">
+ <button id="memo">遮住公式自测</button>
+ <button id="reset">清空“已背”勾选</button>
+</div>
+
+<!-- ============ 考场策略 ============ -->
+<section id="plan">
+<div class="fix"><b>先改一个误会：</b>管综是 <b>3 小时</b>（180 分钟，一般 8:30–11:30），不是 2.5 小时。多出来的 30 分钟就是给数学的。</div>
+
+<h2>去年 → 今年，分要从哪来</h2>
+<div class="card">
+<p>去年：英语 45 + 管综 63 = 108。档线约 145。差 <b>约 40 分</b>，主要靠管综补。</p>
+<div class="tblw"><table>
+<tr><th>科目</th><th>满分</th><th>今年目标</th><th>怎么拿</th></tr>
+<tr><td>数学</td><td>75（25题×3）</td><td><b>30–36</b>（对10–12题）</td><td>只做“必做”题型 + 剩下的全部按统计猜</td></tr>
+<tr><td>逻辑</td><td>60（30题×2）</td><td><b>36–40</b>（对18–20题）</td><td>你现在在练的口诀 + 先易后难</td></tr>
+<tr><td>写作</td><td>65（30+35）</td><td><b>36–42</b></td><td>论证文背模板找4个错；论说文背结构</td></tr>
+<tr><td>管综合计</td><td>200</td><td><b>约 100–115</b></td><td>+ 英语 45–50 ≈ 145–160</td></tr>
+</table></div>
+<p class="small">数学只要比去年多对 5–6 题，就是 +15 分以上。数学不用学懂，只要“会的题不错 + 不会的题不空”。</p>
+</div>
+
+<h2>3 小时怎么分</h2>
+<div class="card">
+<ol>
+<li><b>逻辑 55 分钟</b>（第26–55题）：单题先做，大题组（1拖2）放最后。1 题超过 2.5 分钟就猜。</li>
+<li><b>写作 60 分钟</b>：论证有效性分析 25 分钟，论说文 35 分钟。</li>
+<li><b>数学 60 分钟</b>（第1–25题）：只做“必做”题型，每题最多 2.5 分钟。</li>
+<li><b>最后 5 分钟：</b>所有空着的题按下面的统计涂满。<b>不倒扣分，一个都不能空。</b></li>
+</ol>
+<p class="small">数学放最后的原因：数学是你最弱的，就算时间不够也可以靠猜拿一部分分；作文没写完是 0 分，逻辑没做是白丢。</p>
+</div>
+
+<h2>盲猜字母（2009–2026 共18年真题统计）</h2>
+<div class="card">
+<h3>条件充分性判断（第16–25题，180题）→ 猜 <span class="big">C</span></h3>
+<div id="ds"></div>
+<p class="small">近4年（2023–2026）C 占 30%。每年 E 一般只有 1–2 个，<b>不会做的不要猜 E</b>。</p>
+</div>
+<div class="card">
+<h3>问题求解（第1–15题，270题）→ 猜 <span class="big">B 或 D</span></h3>
+<div id="ps"></div>
+<p class="small">A 最少（14%）。每年每个字母大约出现 2–4 次，如果你已经做出的题里某个字母已经出现 4–5 次，猜别的。</p>
+</div>
+<div class="card">
+<h3>逻辑（第26–55题，540题）→ 猜 <span class="big">D</span></h3>
+<div id="lg"></div>
+</div>
+<div class="note">猜题只是保底：每道题猜对的概率也就 1/4 左右。真正的分来自“必做”题型做对。</div>
+
+<h2>考场保命动作</h2>
+<div class="card"><ul>
+<li>逻辑：题干最后几个字先圈——<b>除外、不能、不能削弱、不能推出、一定为假</b>。</li>
+<li>数学：题目说“任意”“恒成立”，或选项是字母式子 → 直接特值法。</li>
+<li>数学：几何题图一般按比例画 → 不会算就目测比一比，选最接近的。</li>
+<li>每做完 5 题就涂一次卡，最后不要集中涂卡。</li>
+</ul></div>
+</section>
+
+<!-- ============ 数学 ============ -->
+<section id="math" class="memo">
+<div class="note">数学 25 题 = 问题求解 15 题 + 条件充分性判断 10 题。按 18 年真题统计，<b>每年稳定考的</b>：应用题约 6 题、代数（方程/绝对值/不等式）约 5 题、几何约 5–6 题、概率+排列组合约 3 题、数列约 2 题。<br>标签：<span class="tag t-must">必会</span> 先背这些　<span class="tag t-do">能做就做</span>　<span class="tag t-skip">直接猜</span></div>
+
+<h2>第一步：条件充分性判断（10题30分，最值钱）</h2>
+<div class="card" data-id="m-ds-rule">
+<div class="row"><h3>5 个选项的意思 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<p>题目问的是：<b>条件能不能推出结论</b>（不是让你算结论对不对）。</p>
+<div class="tblw"><table>
+<tr><th>选</th><th>条件(1)</th><th>条件(2)</th><th>口诀</th></tr>
+<tr><td><b>A</b></td><td>✔ 行</td><td>✘</td><td>只有一行</td></tr>
+<tr><td><b>B</b></td><td>✘</td><td>✔ 行</td><td>只有二行</td></tr>
+<tr><td><b>C</b></td><td>✘</td><td>✘</td><td>两个合起来才行</td></tr>
+<tr><td><b>D</b></td><td>✔</td><td>✔</td><td>各自都行</td></tr>
+<tr><td><b>E</b></td><td>✘</td><td>✘</td><td>合起来也不行</td></tr>
+</table></div>
+<p>口诀：<b>A 一、B 二、C 联合、D 都行、E 都不行</b>。</p>
+</div>
+
+<div class="card" data-id="m-ds-trick">
+<div class="row"><h3>6 个秒判技巧 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ol>
+<li><b>小推大 = 充分</b>：条件的范围在结论范围里面 → 充分。例：条件 <span class="f">x=2</span>，结论 <span class="f">x&gt;1</span> → 充分。反过来 <span class="f">x&gt;1</span> 推不出 <span class="f">x=2</span>。</li>
+<li><b>找反例</b>：从条件里挑最“怪”的数代进结论：<span class="f">0</span>、负数、<span class="f">1</span>、两个数相等、数列取常数列。<b>一个反例 = 不充分</b>。</li>
+<li><b>两个未知数，单个条件只给一个式子</b> → 单独都不够，多半是 <b>C</b>。</li>
+<li><b>两个条件长得一样只是数字不同</b>（比如(1) <span class="f">a=2</span>、(2) <span class="f">a=3</span>）→ 不可能是 C，多半是 A / B / D / E 中一个。</li>
+<li><b>两个条件互相矛盾</b>（不可能同时成立）→ 不选 C。</li>
+<li><b>不会就选 C</b>（18年统计最多）。</li>
+</ol>
+<p class="small">顺序：先把结论化简（算出它要的范围），再分别代条件(1)、(2)。单独都不行才考虑联合。</p>
+</div>
+
+<h2>第二步：问题求解的 6 个邪修</h2>
+<div class="card" data-id="m-ps-trick">
+<div class="row"><h3>不会算也能选 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ol>
+<li><b>代入选项</b>：应用题（求人数、天数、价格）直接把选项代回题目。从中间的 C 开始代，大了往小代、小了往大代。</li>
+<li><b>特值法</b>：题目说“任意”“恒成立”或选项是式子 → 令 <span class="f">x=0</span>、<span class="f">x=1</span>；数列令所有项相等；三角形取等边或直角三角形。</li>
+<li><b>倍数排除</b>：比例题答案一定是“份数”的倍数。例（2009第2题）：最后男:女 = 30:19 → 总人数是 <span class="f">49</span> 的倍数 → 选项里只有 686、637 是 49 的倍数，二选一（答案 637）。</li>
+<li><b>画图目测</b>：几何题图一般按比例画，算不出就比一比长度/面积，选最接近的。</li>
+<li><b>范围排除</b>：概率一定在 0 到 1 之间；面积、长度不能是负数；估算一下，把离谱的选项划掉。</li>
+<li><b>“至少”用反面</b>：<span class="f">P(至少一个) = 1 − P(一个都没有)</span>。</li>
+</ol>
+</div>
+
+<h2>第三步：公式卡（按考频排序）</h2>
+
+<div class="card" data-id="m-app">
+<div class="row"><h3>应用题（每年约 6 题）<span class="stars">★★★★★</span><span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>利润：<span class="f">利润 = 售价 − 成本</span>，<span class="f">利润率 = 利润 ÷ 成本</span>（除的是<b>成本</b>）</li>
+<li>先涨 <span class="f">x%</span> 再降 <span class="f">x%</span>：比原来<b>少</b> <span class="f">x²%</span>。同价卖出一个赚 20% 一个亏 20% → 一定<b>亏</b>。</li>
+<li>连续增长：<span class="f">现值 = 原值 × (1+p)ⁿ</span></li>
+<li>浓度：<span class="f">浓度 = 溶质 ÷ 溶液</span>；加水时溶质不变，蒸发时溶质也不变。</li>
+<li>相遇：<span class="f">路程 = (v₁+v₂)·t</span>　追及：<span class="f">路程差 = (v₁−v₂)·t</span></li>
+<li>流水：<span class="f">顺水 = 船速+水速</span>，<span class="f">逆水 = 船速−水速</span></li>
+<li>工程：总工作量设成 <span class="f">1</span>（或设成几个天数的最小公倍数），<span class="f">效率 = 1 ÷ 天数</span>，合作效率相加。</li>
+<li>两集合容斥：<span class="f">A∪B = A + B − A∩B</span>；<span class="f">都不 = 总数 − A∪B</span></li>
+<li>三集合：<span class="f">A∪B∪C = A+B+C − (两两交) + 三交</span></li>
+<li>平均数混合（十字交叉）：两组平均分 <span class="f">a</span>、<span class="f">b</span>，混合后 <span class="f">c</span> → 人数比 <span class="f">= (c−b) : (a−c)</span></li>
+<li>阶梯收费/分段：先算“刚好到分界点”是多少钱，再看超出部分。</li>
+</ul>
+</div>
+
+<div class="card" data-id="m-alg">
+<div class="row"><h3>代数：方程、绝对值、不等式（每年约 5 题）<span class="stars">★★★★★</span><span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>一元二次 <span class="f">ax²+bx+c=0</span>：<span class="f">Δ = b²−4ac</span>，<span class="f">Δ&gt;0</span> 两根，<span class="f">Δ=0</span> 一根，<span class="f">Δ&lt;0</span> 无实根</li>
+<li>韦达：<span class="f">x₁+x₂ = −b/a</span>，<span class="f">x₁x₂ = c/a</span></li>
+<li>常用变形：<span class="f">x₁²+x₂² = (x₁+x₂)² − 2x₁x₂</span>，<span class="f">1/x₁+1/x₂ = (x₁+x₂)/(x₁x₂)</span>，<span class="f">|x₁−x₂| = √Δ / |a|</span></li>
+<li>一正一负两根 ⇔ <span class="f">c/a &lt; 0</span></li>
+<li>二次函数对称轴/顶点：<span class="f">x = −b/(2a)</span>；<span class="f">a&gt;0</span> 开口向上有最小值</li>
+<li>绝对值的意思 = 距离：<span class="f">|x−a|</span> 是 x 到 a 的距离</li>
+<li><span class="f">|x−a| + |x−b|</span> 的最小值 <span class="f">= |a−b|</span>（x 在 a、b 中间时取到）</li>
+<li><span class="f">|x−a| − |x−b|</span> 的范围 <span class="f">[−|a−b|, |a−b|]</span></li>
+<li>均值不等式：<span class="f">a+b ≥ 2√(ab)</span>（a、b 正数，<span class="f">a=b</span> 时取等号）。<b>积一定 → 和最小；和一定 → 积最大</b>。例（2024第4题）：<span class="f">x² + 16/x² ≥ 2×4 = 8</span></li>
+<li>余数定理：<span class="f">f(x)</span> 除以 <span class="f">(x−a)</span> 的余数 <span class="f">= f(a)</span></li>
+<li>乘法公式：<span class="f">(a±b)² = a² ± 2ab + b²</span>，<span class="f">a²−b² = (a+b)(a−b)</span>，<span class="f">a³±b³ = (a±b)(a² ∓ ab + b²)</span></li>
+</ul>
+</div>
+
+<div class="card" data-id="m-geo">
+<div class="row"><h3>平面几何（每年约 3 题）<span class="stars">★★★★</span><span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>三角形面积 <span class="f">= ½ × 底 × 高</span>；<b>高相同 → 面积比 = 底的比</b></li>
+<li>相似三角形：<b>面积比 = 边长比的平方</b></li>
+<li>勾股数：<span class="f">3-4-5</span>、<span class="f">5-12-13</span>、<span class="f">6-8-10</span>、<span class="f">8-15-17</span></li>
+<li>特殊直角三角形：30°-60°-90° 三边 <span class="f">1 : √3 : 2</span>；45°-45°-90° 三边 <span class="f">1 : 1 : √2</span></li>
+<li>等边三角形面积 <span class="f">= (√3/4)·a²</span></li>
+<li>圆：<span class="f">面积 = πr²</span>，<span class="f">周长 = 2πr</span>；扇形 <span class="f">面积 = (圆心角/360°)·πr²</span></li>
+<li>梯形面积 <span class="f">= (上底+下底) × 高 ÷ 2</span></li>
+<li>阴影面积：<b>整体 − 空白</b>，或者把阴影块“割下来补到别处”拼成规则图形。</li>
+<li>直径所对的圆周角 = 90°</li>
+</ul>
+</div>
+
+<div class="card" data-id="m-prob">
+<div class="row"><h3>概率 + 排列组合（每年约 3 题）<span class="stars">★★★★</span><span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>组合（不管顺序）：<span class="f">C(n,m) = n! / (m!(n−m)!)</span>；例 <span class="f">C(5,2) = 10</span>，<span class="f">C(n,m) = C(n, n−m)</span></li>
+<li>排列（管顺序）：<span class="f">A(n,m) = n! / (n−m)!</span>；例 <span class="f">A(5,2) = 20</span></li>
+<li><b>必须相邻 → 捆绑</b>：捆成 1 个一起排，内部再排</li>
+<li><b>不能相邻 → 插空</b>：先排其他人，再把这些人插进空位</li>
+<li><b>相同的东西分给人，每人至少 1 个 → 隔板</b>：n 个分给 m 人 <span class="f">= C(n−1, m−1)</span></li>
+<li><b>平均分组</b>（几组人数一样）要再除以 <span class="f">组数!</span></li>
+<li>错排（都不在自己的位置上）：2 个→1 种，3 个→2 种，4 个→9 种，5 个→44 种</li>
+<li>古典概率 <span class="f">= 符合的种数 ÷ 总种数</span></li>
+<li>独立事件同时发生：<span class="f">P(A且B) = P(A)·P(B)</span></li>
+<li>n 次里恰好 k 次成功：<span class="f">C(n,k)·pᵏ·(1−p)ⁿ⁻ᵏ</span></li>
+<li>至少一次 <span class="f">= 1 − 一次都没有</span></li>
+</ul>
+</div>
+
+<div class="card" data-id="m-seq">
+<div class="row"><h3>数列（每年约 2 题）<span class="stars">★★★★</span><span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>等差：<span class="f">aₙ = a₁ + (n−1)d</span>，<span class="f">Sₙ = n(a₁+aₙ)/2</span></li>
+<li>等差下标性质：<span class="f">m+n = p+q → aₘ+aₙ = aₚ+a_q</span>；n 是奇数时 <span class="f">Sₙ = n × 中间那一项</span></li>
+<li>等差的 <span class="f">Sₙ, S₂ₙ−Sₙ, S₃ₙ−S₂ₙ</span> 也成等差</li>
+<li>等比：<span class="f">aₙ = a₁·qⁿ⁻¹</span>，<span class="f">Sₙ = a₁(1−qⁿ)/(1−q)</span>（<span class="f">q≠1</span>）</li>
+<li>等比下标性质：<span class="f">m+n = p+q → aₘ·aₙ = aₚ·a_q</span></li>
+<li>三个数成等差 <span class="f">2b = a+c</span>；成等比 <span class="f">b² = ac</span></li>
+<li><b>邪修</b>：只给“等差/等比”没给具体数 → 设成常数列（<span class="f">d=0</span> 或 <span class="f">q=1</span>）代进去试。条件充分题里常数列常常就是反例。</li>
+</ul>
+</div>
+
+<div class="card" data-id="m-ana">
+<div class="row"><h3>解析几何（每年约 2 题）<span class="stars">★★★</span><span class="tag t-do">能做就做</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>斜率 <span class="f">k = (y₂−y₁)/(x₂−x₁)</span>；平行 <span class="f">k 相等</span>；垂直 <span class="f">k₁·k₂ = −1</span></li>
+<li>两点距离 <span class="f">√((x₂−x₁)² + (y₂−y₁)²)</span>；中点 <span class="f">((x₁+x₂)/2, (y₁+y₂)/2)</span></li>
+<li>点到直线 <span class="f">Ax+By+C=0</span> 的距离 <span class="f">= |Ax₀+By₀+C| / √(A²+B²)</span></li>
+<li>圆：<span class="f">(x−a)² + (y−b)² = r²</span>，圆心 <span class="f">(a,b)</span></li>
+<li>圆的一般式 <span class="f">x²+y²+Dx+Ey+F=0</span>：圆心 <span class="f">(−D/2, −E/2)</span></li>
+<li>直线和圆：圆心到直线距离 d，<span class="f">d&lt;r</span> 相交，<span class="f">d=r</span> 相切，<span class="f">d&gt;r</span> 相离；弦长 <span class="f">= 2√(r²−d²)</span></li>
+<li>两圆：圆心距 d 和 <span class="f">r₁+r₂</span>、<span class="f">|r₁−r₂|</span> 比大小</li>
+<li>关于 <span class="f">y=x</span> 对称：<span class="f">(x,y) → (y,x)</span>；关于 <span class="f">y=−x</span>：<span class="f">(x,y) → (−y,−x)</span></li>
+<li><b>邪修</b>：在草稿纸上画坐标，点和圆都画出来，很多题可以直接看出来。</li>
+</ul>
+</div>
+
+<div class="card" data-id="m-int">
+<div class="row"><h3>整数、实数、平均数方差（每年约 2 题）<span class="stars">★★★</span><span class="tag t-do">能做就做</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>20 以内质数：<span class="f">2, 3, 5, 7, 11, 13, 17, 19</span>；<b>2 是唯一的偶质数</b>（几个质数加起来是奇数/偶数 → 想想有没有 2）</li>
+<li>整除：被 3（9）整除 ⇔ 各位数字之和被 3（9）整除；被 4 整除看最后两位；被 5 看个位</li>
+<li>奇偶：奇+奇=偶，奇+偶=奇，奇×任何偶=偶</li>
+<li>平均数 <span class="f">= 总和 ÷ 个数</span></li>
+<li>方差 <span class="f">= 平方的平均数 − 平均数的平方</span>；所有数都加 c，方差不变；都乘 k，方差变 <span class="f">k²</span> 倍</li>
+<li>数据越分散，方差越大（看图/看数字直接比）</li>
+</ul>
+</div>
+
+<div class="card" data-id="m-solid">
+<div class="row"><h3>立体几何（每年约 1 题）<span class="stars">★★</span><span class="tag t-do">只背这几个</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>长方体：体对角线 <span class="f">√(a²+b²+c²)</span>，表面积 <span class="f">2(ab+bc+ca)</span></li>
+<li>正方体（边长 a）：外接球半径 <span class="f">√3·a/2</span>，内切球半径 <span class="f">a/2</span></li>
+<li>圆柱：<span class="f">V = πr²h</span>，侧面积 <span class="f">2πrh</span></li>
+<li>圆锥：<span class="f">V = ⅓πr²h</span></li>
+<li>球：<span class="f">V = (4/3)πR³</span>，表面积 <span class="f">4πR²</span></li>
+</ul>
+</div>
+
+<div class="card" data-id="m-skip">
+<div class="row"><h3>看到就跳、直接猜 <span class="tag t-skip">直接猜</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>读完题 30 秒还不知道从哪下手</li>
+<li>解析几何 + 求最值的综合题、复杂的“恒成立”参数范围题</li>
+<li>立体几何的组合体（球套圆柱套圆锥）</li>
+<li>高次方程、复杂的分式不等式</li>
+<li>需要分很多种情况讨论的排列组合</li>
+</ul>
+<p class="small">跳过的题先按统计涂上（问题求解 B/D，条件充分 C），有时间再回来。</p>
+</div>
+</section>
+
+<!-- ============ 逻辑 ============ -->
+<section id="logic" class="memo">
+<div class="fix"><b>你的笔记里有 1 个公式写反了，先改：</b><br>
+“只有 B 才 A” = <span class="f">A → B</span>，它的逆否是 <span class="f">¬B → ¬A</span>（<b>没 B 就没 A</b>），不是 <span class="f">¬A → ¬B</span>。<br>
+例：只有努力才能考上 = 考上→努力；逆否：不努力→考不上。“没考上→不努力”推不出。</div>
+
+<h2>形式逻辑（你已经练的，压缩版）</h2>
+<div class="card" data-id="l-trans">
+<div class="row"><h3>翻译成箭头 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<div class="tblw"><table>
+<tr><th>中文</th><th>箭头</th></tr>
+<tr><td>如果A就B / 只要A就B / A则B</td><td><span class="f">A → B</span></td></tr>
+<tr><td>只有B才A / A离不开B / A必须B / A需要B</td><td><span class="f">A → B</span>（“只有、必须”后面的放箭头后）</td></tr>
+<tr><td>除非A否则B / 除非A才不B</td><td><span class="f">¬A → B</span>（除非 = 如果不）</td></tr>
+<tr><td>A除非B（= 除非B否则不A）</td><td><span class="f">¬B → ¬A</span> = <span class="f">A → B</span></td></tr>
+</table></div>
+<p>只能用两条：<b>肯前推肯后、否后推否前</b>。否前、肯后都推不出。</p>
+</div>
+
+<div class="card" data-id="l-neg">
+<div class="row"><h3>3 个变形公式 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>箭头变“或”：<span class="f">A → B = ¬A ∨ B</span>（前面加非，后面不变）</li>
+<li>否定箭头：<span class="f">¬(A → B) = A ∧ ¬B</span>（前照抄，后加非，用“且”连）</li>
+<li>德摩根：<span class="f">¬(A∧B) = ¬A ∨ ¬B</span>，<span class="f">¬(A∨B) = ¬A ∧ ¬B</span>（且、或对调）</li>
+<li>或的推理：<span class="f">A或B + 非A → B</span> 有效；<span class="f">A或B + A → 非B</span> <b>无效</b></li>
+<li>要么A要么B：一个真另一个一定假</li>
+</ul>
+</div>
+
+<div class="card" data-id="l-quant">
+<div class="row"><h3>直言命题和“矛盾” <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<div class="tblw"><table>
+<tr><th>原句</th><th>矛盾（一真一假）</th></tr>
+<tr><td>所有S是P</td><td>有的S不是P</td></tr>
+<tr><td>所有S不是P</td><td>有的S是P</td></tr>
+<tr><td>必然P</td><td>可能不P</td></tr>
+<tr><td>至少5个</td><td>至多4个</td></tr>
+<tr><td>A且B</td><td>非A或非B</td></tr>
+<tr><td>A→B</td><td>A且非B</td></tr>
+</table></div>
+<p>“有的”= 至少一个，<b>不排除所有</b>。“有的是”和“有的不是”可以同时真，不能同时假。</p>
+<p>真假话题：<b>先找矛盾的两句</b>，它们必有一真一假，再推剩下的。</p>
+</div>
+
+<h2>论证逻辑（每年约 12–15 题，最稳的分）</h2>
+<div class="card" data-id="l-arg">
+<div class="row"><h3>3 步走 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ol>
+<li><b>看问题</b>：削弱 / 加强 / 假设 / 解释 / 结构相似。</li>
+<li><b>找论据和结论</b>，看两者是不是说的同一件事。不一样 → 答案就是“搭桥”（加强）或“拆桥”（削弱）。</li>
+<li><b>看到因果词</b>（导致、因为、所以、是……的原因）→ 削弱首选：<b>另有他因</b>、<b>因果倒置</b>；加强首选：<b>排除他因</b>、<b>说明机制</b>。</li>
+</ol>
+<ul>
+<li>假设题：把选项变成否定，题干马上不成立 → 就是答案。</li>
+<li>解释题：答案要能让“表面矛盾的两件事”都成立，找第三个因素。</li>
+<li>结构相似：只看骨架，翻成字母 <span class="f">A→B，非B，所以非A</span>，找一模一样的。</li>
+<li>不选的：诉诸无知（“尚无证据证明……”）、和题干无关的、只说“有人认为”的。</li>
+</ul>
+</div>
+
+<h2>综合推理 / 大题组（近年每年 3–5 组，最费时）</h2>
+<div class="card" data-id="l-comb">
+<div class="row"><h3>邪修做法 <span class="tag t-do">放最后做</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li><b>放到逻辑最后做</b>：一组 2 题要 5 分钟，单题 1.5 分钟一道，先拿单题的分。</li>
+<li><b>选项代入排除</b>：题目问“可能为真/一定为真”时，不要从头推，直接把选项一个个代进条件，矛盾的划掉。</li>
+<li><b>先用“确定的信息”</b>：题干里直接说死的（如“甲在第3位”）先填进表格，再用箭头条件。</li>
+<li>画表格：人 × 位置/科目，打 ✔ ✘。</li>
+<li>“至少/至多/恰好”数量题：先找<b>数量最紧的</b>那条（例如 5 人选 4 个），往往一下推出很多。</li>
+</ul>
+</div>
+
+<div class="card" data-id="l-traps">
+<div class="row"><h3>你最常踩的 3 个坑 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ol>
+<li>箭头变“或”时，多否了后件（应该是 <span class="f">¬A ∨ B</span>，后面不变）。</li>
+<li>求矛盾时把“或”写成“且”（<span class="f">¬(A∧B) = ¬A ∨ ¬B</span>，要对调）。</li>
+<li>把“有的”当成“只有一些”（“有的”可以是全部）。</li>
+</ol>
+</div>
+<p class="small">练逻辑和写作：<a href="https://kaoyan.studiolunula.nl/#/" target="_blank" rel="noopener">kaoyan.studiolunula.nl</a>　背单词：<a href="https://skot-chen.github.io/daily-words/" target="_blank" rel="noopener">daily-words</a></p>
+</section>
+
+<!-- ============ 写作 ============ -->
+<section id="write" class="memo">
+<div class="fix"><b>你的写作缺陷清单里有重复</b>（“以偏概全”写了两次；“轻率概括”“样本不足”其实和以偏概全是一类）。下面整理成 9 个，背这 9 个就够。</div>
+
+<h2>论证有效性分析（30分，600字，25分钟）</h2>
+<div class="card" data-id="w-flaws">
+<div class="row"><h3>9 个缺陷 + 怎么一眼认出来 <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<div class="tblw"><table>
+<tr><th>缺陷名</th><th>看到什么就想到它</th></tr>
+<tr><td>偷换概念</td><td>前后两个词很像但意思不同（“使用”→“拥有”，“年轻人”→“所有人”）</td></tr>
+<tr><td>以偏概全 / 样本不足</td><td>几个人、一次调查、某个城市 → 推出“全体”“普遍”</td></tr>
+<tr><td>强加因果</td><td>“因为……所以……”“导致”，两件事只是同时出现或先后出现</td></tr>
+<tr><td>混淆充分必要（假言不当）</td><td>“只要……就……”“只有……才……”“不……就不能……”</td></tr>
+<tr><td>不当类比</td><td>“就像……一样”，拿 A 的经验套到 B（猴群→明星）</td></tr>
+<tr><td>非此即彼（假两难）</td><td>只给两个选择，忽略了中间情况</td></tr>
+<tr><td>自相矛盾</td><td>前面说 X，后面又说和 X 相反的话</td></tr>
+<tr><td>数据误用</td><td>只看百分比不看总数、只看平均数、比较的基数不一样</td></tr>
+<tr><td>推断绝对化 / 论据不足</td><td>“必然”“一定”“势必”“完全”——结论说得太满</td></tr>
+</table></div>
+<p class="small">考试时：读材料，每句话旁边标一下，找出<b>最明显的 4 个</b>就够了，不用找全。</p>
+</div>
+
+<div class="card" data-id="w-arg-tpl">
+<div class="row"><h3>万能结构（直接背） <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<p><b>标题</b>：<span class="f">XX 真的能 XX 吗？</span> 或 <span class="f">XX 未必 XX</span>（不加书名号）</p>
+<p><b>开头（约 60 字）</b>：上述材料通过……，得出了“……”的结论。然而，其论证过程存在多处逻辑漏洞，现分析如下。</p>
+<p><b>中间 4 段（每段约 120 字）</b>，每段 3 句：</p>
+<ol>
+<li>【指出】首先，材料由“A”推出“B”，存在<b>XX（缺陷名）</b>之嫌。</li>
+<li>【反驳】即使 A 属实，也未必能得出 B。因为……（举一个另外的可能/反例）。</li>
+<li>【收尾】因此，该推理难以成立。</li>
+</ol>
+<p>四段开头用：<b>首先 / 其次 / 再次 / 最后</b>。</p>
+<p><b>结尾（约 40 字）</b>：综上所述，由于上述论证存在诸多漏洞，“……”的结论难以必然成立。</p>
+</div>
+
+<h2>论说文（35分，700字，35分钟）</h2>
+<div class="card" data-id="w-essay-topic">
+<div class="row"><h3>近 4 年题目都是“两个东西的关系” <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ul>
+<li>2023：领导艺术，像指挥乐队演奏</li>
+<li>2024：发散性思维（与众不同）</li>
+<li>2025：想被认可 → 接受别人的评价标准</li>
+<li>2026：观众有全景视角，球员在场上看不到全局</li>
+</ul>
+<p><b>审题公式</b>：找出材料里的两个东西（全局↔一线、个性↔标准），观点写成：<b>“二者都重要，关键在于结合 / 换位 / 找到平衡”</b>，再落到企业管理上。不要写成只夸一边的口号文。</p>
+</div>
+
+<div class="card" data-id="w-essay-tpl">
+<div class="row"><h3>五段式结构（直接背） <span class="tag t-must">必会</span></h3><label class="chk"><input type="checkbox">已背</label></div>
+<ol>
+<li><b>标题</b>：直接写观点，4–10 个字。例：《既要全景之眼，也要临场之功》</li>
+<li><b>第 1 段（约 100 字）</b>：一两句概括材料 → 亮出中心观点（这一句一定要有）。</li>
+<li><b>第 2 段 是什么/为什么（约 150 字）</b>：分论点句 + 道理 + 一个例子。</li>
+<li><b>第 3 段 为什么/反面（约 150 字）</b>：如果不这样会怎样 + 一个例子。</li>
+<li><b>第 4 段 怎么做（约 150 字）</b>：对企业/管理者提 2–3 条做法。</li>
+<li><b>第 5 段 结尾（约 80 字）</b>：重复中心观点，升华一句。</li>
+</ol>
+<p class="small">万能企业例子（方向通用，提前想好怎么用）：华为长期投入研发、海尔砸冰箱抓质量、柯达不转型被数码相机淘汰、诺基亚错过智能手机。</p>
+</div>
+</section>
+
+<!-- ============ 5天背完 ============ -->
+<section id="days5">
+<div class="note">目标：5 天背完数学，之后每周只花 20 分钟用“遮住公式自测”过一遍。每天大约 1 小时，不影响你练逻辑写作和背单词。</div>
+<div class="card" data-id="d1"><div class="row"><h3>第 1 天：条件充分 + 应用题</h3><label class="chk"><input type="checkbox">完成</label></div>
+<p>背 5 个选项意思、6 个秒判技巧、应用题公式。然后做 2026 年真题第 16–25 题（只练判断方法，不会的看解析）。</p></div>
+<div class="card" data-id="d2"><div class="row"><h3>第 2 天：概率排列 + 数列</h3><label class="chk"><input type="checkbox">完成</label></div>
+<p>背捆绑、插空、隔板、至少用反面；等差等比公式和常数列特值。做 2025 年真题里这两类题。</p></div>
+<div class="card" data-id="d3"><div class="row"><h3>第 3 天：平面几何 + 立体几何</h3><label class="chk"><input type="checkbox">完成</label></div>
+<p>背面积、相似、勾股数、特殊三角形；立体只背 5 个公式。练“画图目测”。</p></div>
+<div class="card" data-id="d4"><div class="row"><h3>第 4 天：代数 + 解析几何</h3><label class="chk"><input type="checkbox">完成</label></div>
+<p>背韦达、绝对值距离、均值不等式；解析几何背距离公式和直线与圆。</p></div>
+<div class="card" data-id="d5"><div class="row"><h3>第 5 天：计时模拟</h3><label class="chk"><input type="checkbox">完成</label></div>
+<p>用 60 分钟做一套完整真题数学（2024 年），严格按“必做/跳过/盲猜”执行，最后对答案算分。目标 30 分以上。</p></div>
+<div class="card" data-id="d6"><div class="row"><h3>之后每周：20 分钟复习</h3><label class="chk"><input type="checkbox">本周已复习</label></div>
+<p>打开这个页面，点“遮住公式自测”，每个公式先自己说出来，再点开看对不对。考前一周再做一套计时模拟。</p></div>
+<p class="small">数据来源：<a href="https://github.com/dollarser/kaoyan-199-guanzong-real-exams" target="_blank" rel="noopener">dollarser/kaoyan-199-guanzong-real-exams</a>（2009–2026 年真题与答案，答案字母分布由脚本统计）。</p>
+</section>
+</main>
+
+<script>
+(function(){
+  var KEY="kaoyan199-notes-v1";
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  var st=load();
+
+  // tabs
+  var tabs=document.querySelectorAll("#tabs button");
+  function show(t){
+    tabs.forEach(function(b){b.setAttribute("aria-selected",b.dataset.t===t)});
+    document.querySelectorAll("main section").forEach(function(s){s.classList.toggle("show",s.id===t)});
+    st.tab=t;save(st);window.scrollTo(0,0);
+  }
+  tabs.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
+  var h=location.hash.slice(1);
+  show(document.getElementById(h)?h:(st.tab&&document.getElementById(st.tab)?st.tab:"plan"));
+
+  // done checkboxes
+  st.done=st.done||{};
+  document.querySelectorAll(".card[data-id]").forEach(function(c){
+    var cb=c.querySelector("input[type=checkbox]");if(!cb)return;
+    var id=c.dataset.id;cb.checked=!!st.done[id];c.classList.toggle("done",cb.checked);
+    cb.onchange=function(){st.done[id]=cb.checked;c.classList.toggle("done",cb.checked);save(st)};
+  });
+  document.getElementById("reset").onclick=function(){
+    if(!confirm("清空所有“已背”勾选？"))return;
+    st.done={};save(st);
+    document.querySelectorAll(".card[data-id]").forEach(function(c){var cb=c.querySelector("input");if(cb)cb.checked=false;c.classList.remove("done")});
+  };
+
+  // memo mode
+  var memo=document.getElementById("memo");
+  function setMemo(on){
+    document.querySelectorAll("section.memo").forEach(function(s){s.classList.toggle("hide",on)});
+    memo.classList.toggle("on",on);memo.textContent=on?"显示全部公式":"遮住公式自测";
+    if(!on)document.querySelectorAll(".f.peek").forEach(function(f){f.classList.remove("peek")});
+  }
+  memo.onclick=function(){setMemo(!memo.classList.contains("on"))};
+  document.addEventListener("click",function(e){
+    var f=e.target.closest(".hide .f");if(f)f.classList.toggle("peek");
+  });
+
+  // answer stats (2009–2026, counted from the answer keys)
+  function bars(id,data,total){
+    var max=Math.max.apply(null,data.map(function(d){return d[1]}));
+    document.getElementById(id).innerHTML=data.map(function(d){
+      var pct=Math.round(d[1]/total*100);
+      return '<div class="bar"><b>'+d[0]+'</b><span class="b" style="width:'+(d[1]/max*60)+'%"></span><span>'+pct+'%（'+d[1]+'题）</span></div>';
+    }).join("");
+  }
+  bars("ds",[["C",47],["A",42],["D",38],["B",29],["E",24]],180);
+  bars("ps",[["B",63],["D",61],["C",56],["E",51],["A",39]],270);
+  bars("lg",[["D",126],["C",111],["B",106],["E",103],["A",94]],540);
+
+  // countdown to exam (Dec 26)
+  var now=new Date(),ex=new Date(now.getFullYear(),11,26);
+  var d=Math.ceil((ex-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
+  if(d>=0)document.getElementById("days").textContent="离考试约 "+d+" 天";
+})();
+</script>
+</body>
+</html>
