@@ -9,17 +9,17 @@
 :root{
   --bg:#f7f5f0;--card:#fff;--ink:#1d1d1f;--sub:#5f5f66;--line:#e4e0d6;
   --acc:#b4462a;--acc-soft:#fbe9e3;--ok:#2f7d4f;--ok-soft:#e3f3e9;--warn:#9a6b00;--warn-soft:#fff3d1;
-  --code:#f1eee6;
+  --code:#f1eee6;--on-acc:#fff;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#16161a;--card:#1f1f25;--ink:#ececf0;--sub:#a3a3ad;--line:#33333c;
-    --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;
+    --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;--on-acc:#1a1a1a;
   }
 }
 :root[data-theme="dark"]{
   --bg:#16161a;--card:#1f1f25;--ink:#ececf0;--sub:#a3a3ad;--line:#33333c;
-  --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;
+  --acc:#f08a6c;--acc-soft:#3a231c;--ok:#6fcf97;--ok-soft:#1c3226;--warn:#f2c94c;--warn-soft:#3a3218;--code:#2a2a31;--on-acc:#1a1a1a;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink)}
@@ -31,7 +31,7 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px so
 .top .days{font-size:13px;color:var(--sub)}
 nav{display:flex;gap:6px;overflow-x:auto;padding:6px 0 10px;scrollbar-width:none}
 nav button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
-nav button[aria-selected="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+nav button[aria-selected="true"]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 .tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
 .tools button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
 .tools button.on{border-color:var(--acc);color:var(--acc)}
@@ -69,7 +69,7 @@ a{color:var(--acc)}
 .big{font-size:20px;font-weight:700}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .acts button,.chips button,.qnav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:8px 14px;font:inherit;font-size:15px;cursor:pointer}
-.acts button.pri,.qnav button.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.acts button.pri,.qnav button.pri{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 .prog{font-size:13.5px;color:var(--sub);margin:8px 0 0}
 .prog:empty{display:none}
 .card.hl{outline:3px solid var(--warn);outline-offset:2px;transition:outline-color 1s}
@@ -91,6 +91,26 @@ a{color:var(--acc)}
 .expl .trick{display:inline-block;font-size:12.5px;font-weight:600;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:1px 8px;margin-bottom:4px}
 .qnav{display:flex;gap:8px;justify-content:space-between;margin-top:10px}
 .score{font-size:28px;font-weight:700;margin:6px 0}
+textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);color:var(--ink);resize:vertical}
+.dots{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0 4px}
+.dots .dot{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;cursor:pointer;padding:0}
+.dots .dot.g{background:var(--ok-soft);border-color:var(--ok)}
+.dots .dot.y{background:var(--warn-soft);border-color:var(--warn)}
+.dots .dot.r{background:var(--acc-soft);border-color:var(--acc)}
+.dots .dot.cur{outline:2px solid var(--ink);outline-offset:1px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.grid2 button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:10px 6px;font:inherit;font-size:15px;cursor:pointer}
+.grid2 button.right{border-color:var(--ok);background:var(--ok-soft)}
+.grid2 button.wrong{border-color:var(--acc);background:var(--acc-soft)}
+.grid2 button:disabled{cursor:default;color:var(--ink)}
+.big2{font-size:17px;font-weight:600}
+.task .row{align-items:center}
+.wbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer;flex:none}
+.wbtn.pri{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.cloze p{line-height:2.4}
+.cz{font:inherit;font-size:15px;border:none;border-bottom:2px solid var(--acc);background:var(--code);color:var(--ink);padding:2px 4px;border-radius:4px 4px 0 0;max-width:100%}
+.cz.right{border-bottom-color:var(--ok);background:var(--ok-soft)}
+.cz.wrong{border-bottom-color:var(--acc);background:var(--acc-soft)}
 @media print{header,.tools,label.chk{display:none}section{display:block!important}.card{break-inside:avoid}}
 </style>
 </head>
@@ -105,6 +125,7 @@ a{color:var(--acc)}
    <button role="tab" data-t="write">写作</button>
    <button role="tab" data-t="days5">5天背完</button>
    <button role="tab" data-t="drill">真题练习</button>
+   <button role="tab" data-t="daily">每日写作</button>
   </nav>
  </div>
 </header>
@@ -449,6 +470,7 @@ a{color:var(--acc)}
 <tr><td>推断绝对化 / 论据不足</td><td>“必然”“一定”“势必”“完全”——结论说得太满</td></tr>
 </table></div>
 <p class="small">考试时：读材料，每句话旁边标一下，找出<b>最明显的 4 个</b>就够了，不用找全。</p>
+<div class="acts"><button class="pri" data-t-go="daily" data-wsub="cards">每天练：缺陷快认 10 张</button><button data-t-go="daily" data-wsub="cloze">模板默写</button><button data-t-go="daily" data-wsub="lz">真题找缺陷</button></div>
 </div>
 
 <div class="card" data-id="w-arg-tpl">
@@ -474,6 +496,7 @@ a{color:var(--acc)}
 <li>2025：想被认可 → 接受别人的评价标准</li>
 <li>2026：观众有全景视角，球员在场上看不到全局</li>
 </ul>
+<div class="acts" style="margin-bottom:8px"><button class="pri" data-t-go="daily" data-wsub="essay">每天练：审题立意 1 题（共 25 题）</button></div>
 <p><b>审题公式</b>：找出材料里的两个东西（全局↔一线、个性↔标准），观点写成：<b>“二者都重要，关键在于结合 / 换位 / 找到平衡”</b>，再落到企业管理上。不要写成只夸一边的口号文。</p>
 </div>
 
@@ -523,6 +546,9 @@ a{color:var(--acc)}
 <div id="qbox"></div>
 <p class="small">题目都是历年真题原题，只选了不用看图就能做的题。做题记录只存在这台设备的浏览器里。</p>
 </section>
+
+<!-- ============ 每日写作 ============ -->
+<section id="daily"><div id="wbox"></div></section>
 </main>
 
 <script>
@@ -681,7 +707,7 @@ a{color:var(--acc)}
     var b=e.target.closest("[data-drill],[data-learn],[data-memo],[data-opt],[data-step],[data-finish],[data-goto],[data-t-go]");
     if(!b)return;
     if(b.dataset.drill){startDrill(b.dataset.drill);return}
-    if(b.dataset.tGo){show(b.dataset.tGo);return}
+    if(b.dataset.tGo){show(b.dataset.tGo);if(b.dataset.wsub&&window.K199W)window.K199W.open(b.dataset.wsub);return}
     if(b.dataset.memo){show("math");setMemo(true);return}
     if(b.dataset.learn){
       show("math");var ids=b.dataset.learn.split(","),first=null;
@@ -700,6 +726,7 @@ a{color:var(--acc)}
     }
   });
   refreshProg();render();
+  window.K199={st:st,save:function(){save(st)},show:show};
 
   // answer stats (2009–2026, counted from the answer keys)
   function bars(id,data,total){
@@ -719,5 +746,6 @@ a{color:var(--acc)}
   if(d>=0)document.getElementById("days").textContent="离考试约 "+d+" 天";
 })();
 </script>
+<script src="writing.js"></script>
 </body>
 </html>
