@@ -111,6 +111,19 @@ textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);b
 .cz{font:inherit;font-size:15px;border:none;border-bottom:2px solid var(--acc);background:var(--code);color:var(--ink);padding:2px 4px;border-radius:4px 4px 0 0;max-width:100%}
 .cz.right{border-bottom-color:var(--ok);background:var(--ok-soft)}
 .cz.wrong{border-bottom-color:var(--acc);background:var(--acc-soft)}
+.row35{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.row35 b{font-size:20px;color:var(--acc)}
+.day35 .dt{display:inline-block;min-width:78px;font-size:14px;color:var(--sub);font-weight:600}
+.day35.past{opacity:.7}.day35.done{opacity:.5}
+.day35.today{outline:3px solid var(--acc);outline-offset:2px;opacity:1}
+.day35.exam{border-color:var(--acc);background:var(--acc-soft)}
+.blk{border-top:1px dashed var(--line);padding:8px 0 4px}
+.blk .chk{display:flex;gap:8px;align-items:center;cursor:pointer;flex-wrap:wrap}
+.blk .chk input{width:18px;height:18px;accent-color:var(--ok)}
+.blk p{margin:4px 0 0 26px}
+.blk .acts{margin:6px 0 0 26px}
+.blk .acts button{padding:5px 10px;font-size:14px}
+.blk.ok p{color:var(--sub);text-decoration:line-through}
 @media print{header,.tools,label.chk{display:none}section{display:block!important}.card{break-inside:avoid}}
 </style>
 </head>
@@ -119,6 +132,7 @@ textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);b
  <div class="wrap">
   <div class="top"><h1>管综199 速记</h1><span class="days" id="days"></span></div>
   <nav role="tablist" id="tabs">
+   <button role="tab" data-t="sprint">35天冲刺</button>
    <button role="tab" data-t="plan">考场策略</button>
    <button role="tab" data-t="math">数学邪修</button>
    <button role="tab" data-t="logic">逻辑</button>
@@ -135,6 +149,9 @@ textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);b
  <button id="memo">遮住公式自测</button>
  <button id="reset">清空“已背”勾选</button>
 </div>
+
+<!-- ============ 35 天冲刺 ============ -->
+<section id="sprint"><div id="sprintbox"></div></section>
 
 <!-- ============ 考场策略 ============ -->
 <section id="plan">
@@ -567,7 +584,8 @@ textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);b
   }
   tabs.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
   var h=location.hash.slice(1);
-  show(document.getElementById(h)?h:(st.tab&&document.getElementById(st.tab)?st.tab:"plan"));
+  var before=new Date()<new Date(2026,11,27);
+  show(document.getElementById(h)?h:(before?"sprint":(st.tab&&document.getElementById(st.tab)?st.tab:"plan")));
 
   // done checkboxes
   st.done=st.done||{};
@@ -747,5 +765,6 @@ textarea{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);b
 })();
 </script>
 <script src="writing.js"></script>
+<script src="sprint.js"></script>
 </body>
 </html>
